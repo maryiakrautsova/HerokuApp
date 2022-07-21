@@ -24,9 +24,13 @@ public class InputsTests extends BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //check digit value
-        String digitAfterArrowUp =
-                driver.findElement(By.cssSelector("div > div:nth-child(1) > div")).getText();
-        Assert.assertEquals(digitAfterArrowUp, "124");
+
+        WebElement shadowHost = driver.findElement(By.cssSelector("#shadow_host"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement shadowRoot = (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
+        WebElement shadowTreeElement = shadowRoot.findElement(By.cssSelector("[contenteditable='plaintext-only']"));
+        String actual = shadowTreeElement.getText();
+        Assert.assertEquals(actual, "124");
     }
 
     @Test
