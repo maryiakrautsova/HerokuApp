@@ -16,21 +16,25 @@ public class InputsTests extends BaseTest {
         driver.get(Urls.INPUTS_URL);
 
         //input digit (integer)
-        driver.findElement(By.cssSelector("div > div:nth-child(1) > div")).sendKeys("123");
+        driver.findElement(By.cssSelector("#content > div > div > div > input[type=number]")).sendKeys("123");
 
         //increase input digit
-        driver.findElement(By.cssSelector("div > div:nth-child(1) > div")).sendKeys(Keys.ARROW_UP);
+        driver.findElement(By.cssSelector("#content > div > div > div > input[type=number]")).sendKeys(Keys.ARROW_UP);
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         //check digit value
 
-        WebElement shadowHost = driver.findElement(By.cssSelector("#shadow_host"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement shadowRoot = (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
-        WebElement shadowTreeElement = shadowRoot.findElement(By.cssSelector("[contenteditable='plaintext-only']"));
-        String actual = shadowTreeElement.getText();
-        Assert.assertEquals(actual, "124");
+        WebElement ele = (WebElement) ((JavascriptExecutor) driver)
+                .executeScript("return document.querySelector('#content input[type=\"number\"]').shadowRoot.querySelector('#editing-view-port > div')");
+
+//        WebElement shadowHost = driver.findElement(By.cssSelector("#content input[type=number]"));
+//        JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
+//        WebElement shadowRoot = (WebElement) jsDriver.executeScript("return arguments[0].shadowRoot", shadowHost);
+//        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#editing-view-port > div"));
+
+
+        Assert.assertEquals(ele.getText(), "124");
     }
 
     @Test
