@@ -28,7 +28,6 @@ public class CheckBoxesTests extends BaseTest {
         Boolean checkBoxTwoChecked = checkBoxesPage.isCheckBoxTwoChecked();
         Assert.assertTrue(checkBoxTwoChecked, "Checkbox #2 is set to checked.");
         checkBoxesPage.changeCheckBoxTwoStatus();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Boolean checkBoxTwoAfterSettingUnchecked = checkBoxesPage.isCheckBoxTwoChecked();
         Assert.assertFalse(checkBoxTwoAfterSettingUnchecked, "Checkbox #2 is set to unchecked.");
     }

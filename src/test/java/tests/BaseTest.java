@@ -16,21 +16,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-
         PropertyManager propertyManager = new PropertyManager();
         propertyManager.loadData();
-        String useDriver = propertyManager.get("useDriver");
-        if (Objects.equals(useDriver, "safari")) {
-            System.setProperty("webdriver.Safari.driver", propertyManager.get("PATH_TO_DRIVER_MAC_SAFARI"));
-            driver = new SafariDriver();
-        } else {
-            System.setProperty("webdriver.chrome.driver", propertyManager.get("PATH_TO_DRIVER_MAC_CHROME"));
-            driver = new ChromeDriver();
-        }
-
+        System.setProperty("webdriver.Safari.driver", propertyManager.get("PATH_TO_DRIVER"));
+        driver = new SafariDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-
     }
 
     @AfterMethod(alwaysRun = true)

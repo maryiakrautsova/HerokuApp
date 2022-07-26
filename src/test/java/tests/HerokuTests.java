@@ -16,7 +16,6 @@ public class HerokuTests extends BaseTest {
         addRemoveElementsPage.openAddRemoveElementsPage();
         addRemoveElementsPage.clickAddElement();
         addRemoveElementsPage.clickAddElement();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         addRemoveElementsPage.clickDeleteElement();
         Assert.assertEquals(addRemoveElementsPage.getAmountOfRemainedElements(), 1);
     }
