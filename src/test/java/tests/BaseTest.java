@@ -18,7 +18,7 @@ public class BaseTest {
     public void setUp() {
         PropertyManager propertyManager = new PropertyManager();
         propertyManager.loadData();
-        System.setProperty("webdriver.Safari.driver", propertyManager.get("PATH_TO_DRIVER"));
+       // System.setProperty("webdriver.Safari.driver", propertyManager.get("PATH_TO_DRIVER"));
         driver = new SafariDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
