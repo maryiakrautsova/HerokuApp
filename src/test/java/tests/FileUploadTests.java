@@ -14,8 +14,9 @@ public class FileUploadTests extends BaseTest {
 
         fileUploadPage.sendFilePath();
         fileUploadPage.uploadFile();
-
+        removeImplicitlyWait();
         String confirmationMessageAfterFileUpload = fileUploadPage.getUploadConfirmationMessage();
+        setImplicitlyWait();
         Assert.assertEquals(confirmationMessageAfterFileUpload, "breed-labrador-retriever.jpeg");
     }
 }

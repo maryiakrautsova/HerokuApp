@@ -38,8 +38,6 @@ public class FileUploadPage extends BasePage {
     }
 
     public String getUploadConfirmationMessage() {
-        BaseTest baseTest = new BaseTest();
-        baseTest.removeImplicitlyWait();
         WebDriverWait wait = new WebDriverWait(driver, 5);
         By confirmationTextLocator = By.id("uploaded-files");
         wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationTextLocator));
