@@ -7,7 +7,7 @@ import pages.FileUploadPage;
 public class FileUploadTests extends BaseTest {
 
     @Test
-    public void uploadFileTest() {
+    public void uploadFileTest() throws InterruptedException {
 
         FileUploadPage fileUploadPage = new FileUploadPage(driver);
         fileUploadPage.openFileUploadPage();

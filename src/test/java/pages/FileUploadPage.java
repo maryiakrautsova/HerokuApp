@@ -1,9 +1,13 @@
 package pages;
 
 import constants.Urls;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import tests.BaseTest;
 
 public class FileUploadPage extends BasePage {
 
@@ -34,6 +38,11 @@ public class FileUploadPage extends BasePage {
     }
 
     public String getUploadConfirmationMessage() {
+        BaseTest baseTest = new BaseTest();
+        baseTest.removeImplicitlyWait();
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        By confirmationTextLocator = By.id("uploaded-files");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(confirmationTextLocator));
         return uploadConfirmationText.getText().trim();
     }
 }
