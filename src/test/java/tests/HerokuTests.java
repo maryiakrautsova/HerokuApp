@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import pages.AddRemoveElementsPage;
 import pages.TablesPage;
 
-import java.util.concurrent.TimeUnit;
 
 public class HerokuTests extends BaseTest {
 
